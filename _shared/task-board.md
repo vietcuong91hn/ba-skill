@@ -20,7 +20,7 @@ Cập nhật: 17/11/2026 · Căn cứ: D-002 (BA duyệt `reviews/G-00_thongnhat
 | G-06 | Đề xuất giải pháp sơ bộ, demo/POC | 0 | Đk | Claude | Gemini | Chưa bắt đầu | Bật khi loại B |
 | G-07 | Ước lượng phạm vi, công sức, lộ trình | 0 | B | Claude | Gemini | Chưa bắt đầu | |
 | G-08 | Đánh giá và lựa chọn nhà cung cấp | 0 | Đk | Gemini | Claude | Chưa bắt đầu | Bật khi loại A |
-| G-09 | Lập Business Case + kế hoạch hiện thực hóa lợi ích | 0 | B | Claude | Gemini | Chưa bắt đầu | Biến thể hồ sơ vốn nhà nước (chờ Q-03) |
+| G-09 | Lập Business Case + kế hoạch hiện thực hóa lợi ích | 0 | B | Claude | Gemini | Chưa bắt đầu | Nguồn vốn: hỏi BA theo từng dự án (D-006) |
 | G-10 | 🧑 Trình bày đề xuất, xin phê duyệt chủ trương | 0 | B | Gemini | Claude | Chưa bắt đầu | |
 | G-69 🆕 | Yêu cầu kỹ thuật cho hồ sơ mời thầu / RFP | 0 | Đk | Claude | Gemini | Chưa bắt đầu | Bật khi loại A |
 | G-70 🆕 | Phạm vi hợp đồng / SOW và tiêu chí nghiệm thu | 0 | Đk | Claude | Gemini | Chưa bắt đầu | Bật khi loại B hoặc có thuê ngoài |
@@ -76,12 +76,12 @@ Cập nhật: 17/11/2026 · Căn cứ: D-002 (BA duyệt `reviews/G-00_thongnhat
 | G-54 | Phản hồi và yêu cầu cải tiến | 8 | B | Gemini | Claude | Chưa bắt đầu | |
 | G-55 | Bài học, đề xuất giai đoạn tiếp + tự đánh giá BA | 8 | B | Claude | Gemini | Chưa bắt đầu | |
 | G-56 | Bảng thuật ngữ chung | X | B | Claude | Gemini | Chưa bắt đầu | |
-| G-57 | Quản lý phiên bản, đồng bộ tài liệu, decision-log | X | B | Claude | Gemini | Đang làm | decision-log đã mở (D-001…D-004) |
+| G-57 | Quản lý phiên bản, đồng bộ tài liệu, decision-log | X | B | Claude | Gemini | Đang làm | decision-log D-001…D-007; cập nhật CLAUDE.md/GEMINI.md đang chờ Gemini review |
 | G-58 | Biên bản họp (`minutes/`) | X | B | Gemini | Claude | Chưa bắt đầu | |
 | G-59 | Quản lý RAID | X | B | Claude | Gemini | Chưa bắt đầu | |
 | G-60 | 🧑 Quản lý quan hệ, kỳ vọng | X | B | Claude | Gemini | Chưa bắt đầu | |
 | G-61 ⇄ | Báo cáo tiến độ BA | X | B | Claude | Gemini | Chưa bắt đầu | |
-| G-62 | Chuẩn hóa template, kèm cặp BA junior | X | TC | Claude | Gemini | Chưa bắt đầu | P-02 template vốn nhà nước chờ Q-01 |
+| G-62 | Chuẩn hóa template, kèm cặp BA junior | X | TC | Claude | Gemini | Chưa bắt đầu | Không làm template riêng cho vốn nhà nước (D-005) |
 | G-71 | — | – | – | – | – | Không dùng | Gộp vào G-13 (D-002) |
 
 Kiểm đếm (không tính G-00 và G-71): tổng 70 việc G-01…G-70 · Claude làm 49 · Gemini làm 21.
