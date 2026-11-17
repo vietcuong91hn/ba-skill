@@ -34,8 +34,10 @@ Repo này là **bộ quy tắc gốc**. Mỗi dự án là một repo riêng, g�
 
 Lịch sử chat và cấu hình Orca chỉ nằm trên máy cũ; tài liệu, quyết định, trạng thái công việc nằm trong các repo trên GitHub. **Cuối mỗi buổi làm việc, push mọi nhánh.** Danh sách dự án và worktree ở `_shared/projects.md`.
 
+**Trên máy cũ, trước khi chuyển:** trong mỗi worktree chạy `git status -sb` — phải sạch, không có `[ahead N]`; nếu chưa thì commit và push. File lớn hơn 100 MB (ghi âm, video) GitHub không nhận, phải chép tay.
+
 **Trên máy mới:**
-1. Cài Git, GitHub CLI, Orca, Claude Code, Antigravity CLI. Đăng nhập: `gh auth login`, Claude, Antigravity (tài khoản Google).
+1. Cài Git, GitHub CLI, Orca, Claude Code, Antigravity CLI. Chạy `git config --global core.longpaths true`. Đăng nhập: `gh auth login`, Claude, Antigravity (tài khoản Google).
 2. Lấy bộ quy tắc về (đặt ngoài OneDrive) và mở trong Orca:
    ```
    git clone -b feature/coord-claude https://github.com/vietcuong91hn/ba-skill C:\Users\<tên>\repos\ba-skill

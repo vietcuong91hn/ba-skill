@@ -89,9 +89,11 @@ du-an-X/
 
 Lịch sử chat và cấu hình Orca chỉ nằm trên máy; mọi thứ cần giữ phải nằm trong repo và đã push lên GitHub. **Cuối mỗi buổi làm việc, push mọi nhánh.** Không mở cùng một repo trên hai máy cùng lúc; trao đổi giữa các máy qua GitHub, không qua OneDrive.
 
+**Trước khi rời máy cũ**: trong mỗi worktree, `git status -sb` phải sạch và không có `[ahead N]`; nếu không thì commit, push. File lớn hơn 100 MB (ghi âm, video) GitHub không nhận: ghi trong `intake-log` nơi lưu bản gốc và chép tay sang máy mới.
+
 Khi BA nhắn **"Cài đặt worktree cho máy mới"** (trong phiên Claude ở repo `ba-skill`):
 
-1. **Kiểm tra công cụ** và báo cái nào thiếu: `git`, `gh` (đã đăng nhập), `orca status`, Claude Code, Antigravity CLI (`agy`, đã đăng nhập).
+1. **Kiểm tra công cụ** và báo cái nào thiếu: `git` (trên Windows bật `git config --global core.longpaths true` vì tên thư mục tiếng Việt dễ vượt giới hạn đường dẫn), `gh` (đã đăng nhập), `orca status`, Claude Code, Antigravity CLI (`agy`, đã đăng nhập).
 2. **Liệt kê** từ `_shared/projects.md`: mỗi dự án — repo, hiển thị, phiên bản quy tắc, các worktree (nhánh, agent); đánh dấu cái nào **đã có trên máy** (`orca repo list`, `orca worktree list`), commit mới nhất trên GitHub. Đối chiếu `gh repo list` để báo repo có trên GitHub mà chưa có trong danh mục (không tự thêm).
 3. **Hỏi BA xác nhận** (dừng chờ trả lời): cài dự án nào; thư mục gốc đặt repo (đề xuất ngoài OneDrive, ví dụ `C:\Users\<tên>\repos`); có khởi chạy agent luôn không.
 4. Sau khi BA xác nhận, với mỗi dự án được chọn:
