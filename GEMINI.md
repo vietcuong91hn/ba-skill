@@ -62,7 +62,7 @@ Bạn **không được ghi**: `_shared/`, `00_input/`, `_skill/`, `CLAUDE.md`, 
 - **Mã dự án** do BA đặt (ví dụ `G` cho G-Safe). **Mã công việc trong dự án = mã dự án + số thứ tự ở bảng Mục 6**: dự án mã `G` dùng `G-01 … G-70`; dự án mã `H` dùng `H-01 … H-70` (`H-13` là việc số 13 của bảng). Mã `IN-xxx`, `D-xxx` đánh riêng trong từng dự án; khi nhắc ngoài dự án thì ghi kèm mã dự án, ví dụ `H/IN-003`.
 - **Tin nhắn của BA** mở đầu bằng mã dự án trong ngoặc vuông, ví dụ `[G] Nhận tài liệu …`. Thiếu mã dự án, hoặc mã không khớp repo đang mở → hỏi lại BA, không đoán.
 - **Không mang ngữ cảnh giữa các dự án**: chỉ dùng tài liệu trong repo dự án đang mở và `_skill/`. Không nhắc, không chép thông tin của dự án khác.
-- **Khởi tạo dự án** (Claude làm, Gemini review): tạo repo từ `templates/project/` → thêm submodule `_skill/` ở tag hiện hành → đăng ký repo với Orca → tạo worktree `<mã>-coord` (Claude, nhánh `feature/coord-claude`) và `<mã>-review` (Gemini chạy bằng Antigravity, nhánh `feature/review-gemini`) → mỗi worktree chạy `git submodule update --init`.
+- **Khởi tạo dự án** (Claude làm, Gemini review): tạo repo từ `templates/project/` → thêm submodule `_skill/` ở tag hiện hành → đăng ký repo với Orca → tạo worktree `<mã>-coord` (Claude, nhánh `feature/coord-claude`) và `<mã>-review` (Gemini chạy bằng Antigravity, nhánh `feature/review-gemini`) → mỗi worktree chạy `git submodule update --init` → ghi dự án và worktree vào `_shared/projects.md` của `ba-skill`.
 - Khi được khởi chạy trong một dự án: đọc `GEMINI.md` ở gốc repo dự án (thông tin dự án), rồi đọc toàn bộ `_skill/GEMINI.md` (nhiệm vụ của bạn).
 
 ---

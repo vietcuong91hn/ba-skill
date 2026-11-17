@@ -30,4 +30,20 @@ Repo này là **bộ quy tắc gốc**. Mỗi dự án là một repo riêng, g�
    Lời nhắn đầu tiên yêu cầu agent đọc `GEMINI.md`.
 2. Chạy **Bước 0** (đồng bộ danh mục công việc) trước khi bắt đầu dự án.
 
+## Chuyển máy
+
+Lịch sử chat và cấu hình Orca chỉ nằm trên máy cũ; tài liệu, quyết định, trạng thái công việc nằm trong các repo trên GitHub. **Cuối mỗi buổi làm việc, push mọi nhánh.** Danh sách dự án và worktree ở `_shared/projects.md`.
+
+**Trên máy mới:**
+1. Cài Git, GitHub CLI, Orca, Claude Code, Antigravity CLI. Đăng nhập: `gh auth login`, Claude, Antigravity (tài khoản Google).
+2. Lấy bộ quy tắc về (đặt ngoài OneDrive) và mở trong Orca:
+   ```
+   git clone -b feature/coord-claude https://github.com/vietcuong91hn/ba-skill C:\Users\<tên>\repos\ba-skill
+   orca repo add --path C:\Users\<tên>\repos\ba-skill
+   ```
+   (Sau khi merge PR vào `main` thì bỏ `-b feature/coord-claude`.)
+3. Mở Claude Code trong repo `ba-skill` và nhắn: **`Cài đặt worktree cho máy mới`**. Claude kiểm tra công cụ, liệt kê dự án và worktree, **hỏi xác nhận** rồi mới clone, tạo worktree và khởi chạy agent (Mục 4.2 của `CLAUDE.md`).
+
+Không mở cùng một repo trên hai máy cùng lúc; trao đổi giữa các máy qua GitHub, không qua OneDrive.
+
 Danh mục công việc G-01 … G-70 theo SDLC nằm ở Mục 6 của mỗi file, đã thống nhất ở Bước 0 ngày 17/11/2026 (Claude làm 49 việc, Gemini làm 21 việc).
