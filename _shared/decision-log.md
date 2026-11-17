@@ -13,6 +13,7 @@ Mỗi quyết định ghi một dòng. Không sửa dòng cũ; quyết định t
 | D-006 | 17/11/2026 | Chung | Loại dự án (A/B/C), nguồn vốn và thông tin dự án khác **chưa rõ thì các trợ lý hỏi lại BA**, không tự đoán. | Trả lời Q-02, Q-03 | Ghi vào Mục 6 `CLAUDE.md`, `GEMINI.md`; hỏi khi bắt đầu từng dự án (G-13) |
 | D-007 | 17/11/2026 | G-57 | Đồng ý phiếu cập nhật `CLAUDE.md`, `GEMINI.md` theo D-002, D-003, có ghi D-001 vào hai file. | Phiếu đề xuất cập nhật hai file nhiệm vụ | Claude sửa, Gemini review |
 | D-008 | 17/11/2026 | G-57 | Ghi đúng môi trường chạy: Gemini chạy bằng **Antigravity CLI** (không phải Gemini CLI) trong `CLAUDE.md`, `GEMINI.md`, `README.md`; README cập nhật danh mục G-01 … G-70. | BA yêu cầu "sửa lại chạy trên antigravity cho chuẩn" | Claude sửa, Gemini review |
+| D-009 | 17/11/2026 | G-57 | **Hướng submodule**: `ba-skill` là bộ quy tắc gốc; mỗi dự án là repo riêng gắn `ba-skill` tại `_skill/`, chốt phiên bản bằng tag. Mã công việc trong dự án = mã dự án + số thứ tự (dự án mã `G` dùng G-01 … G-70). Tin nhắn mở đầu `[MÃ]`. Thêm `templates/project/`, Mục 4.1 vào hai file quy tắc; gắn tag `v1.0` sau khi Gemini review. | BA: "đồng ý hướng submodule"; "mã dự án là G, có các hậu tố đằng sau tương ứng các task" | Mọi dự án mới; dự án đầu tiên G-Safe |
 
 ## Chưa quyết (chờ BA)
 
