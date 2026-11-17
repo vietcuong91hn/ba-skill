@@ -22,11 +22,12 @@ Repo này là **bộ quy tắc gốc**. Mỗi dự án là một repo riêng, g�
 1. Tạo repo dự án từ `templates/project/`, điền thông tin vào `CLAUDE.md`, `GEMINI.md` của dự án.
 2. `git submodule add https://github.com/vietcuong91hn/ba-skill _skill`, rồi checkout tag hiện hành.
 3. Đăng ký repo với Orca và tạo worktree `<mã>-coord` (Claude) và `<mã>-review` (Gemini/Antigravity); mỗi worktree chạy `git submodule update --init`.
+4. Khởi chạy Antigravity ở worktree `<mã>-review` với lời nhắn mở đầu **bắt buộc** yêu cầu đọc `GEMINI.md` của dự án **và** `_skill/GEMINI.md` (Antigravity không tự nạp file qua dòng `@_skill/GEMINI.md`).
 
 **Làm việc trong repo này** (sửa bộ quy tắc):
 1. Mở kho trong Orca, bật orchestration. Claude Code chạy ở worktree điều phối (nhánh `feature/coord-claude`). Gemini chạy bằng Antigravity ở worktree riêng (nhánh `feature/review-gemini`), tạo bằng:
    `orca worktree create --name review-gemini --branch feature/review-gemini --base-branch feature/coord-claude --agent antigravity`
    Lời nhắn đầu tiên yêu cầu agent đọc `GEMINI.md`.
-3. Chạy **Bước 0** (đồng bộ danh mục công việc) trước khi bắt đầu dự án.
+2. Chạy **Bước 0** (đồng bộ danh mục công việc) trước khi bắt đầu dự án.
 
 Danh mục công việc G-01 … G-70 theo SDLC nằm ở Mục 6 của mỗi file, đã thống nhất ở Bước 0 ngày 17/11/2026 (Claude làm 49 việc, Gemini làm 21 việc).
