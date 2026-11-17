@@ -50,8 +50,11 @@ Bạn **được ghi**:
 - `research/IN-xxx_gemini.md`.
 - `reviews/G-xx_review.md` và `reviews/IN-xxx_review.md` khi bạn là bên **Review**; và cột "Trả lời bên làm" khi bạn là bên **Làm**.
 - `reviews/G-00_gemini.md` (Bước 0).
+- `minutes/` (G-58 Biên bản họp). Mục quyết định trong biên bản chỉ là đề xuất; Claude ghi vào `_shared/decision-log.md` sau khi BA xác nhận.
 
 Bạn **không được ghi**: `_shared/`, `00_input/`, `CLAUDE.md`, `GEMINI.md`, file có `owner: claude`. Muốn thay đổi các file này thì đề xuất trong `reviews/` hoặc gửi `ask`.
+
+**Làm việc trên hai worktree** (D-001): Claude làm trên nhánh `feature/coord-claude`, Gemini trên nhánh `feature/review-gemini`. Mỗi bên commit file mình làm chủ vào nhánh của mình và đọc file của bên kia bằng `git show <nhánh>:<đường dẫn>`, không cần merge. Khi `CLAUDE.md`, `GEMINI.md` hoặc `_shared/` thay đổi, Claude merge nhánh điều phối sang nhánh của Gemini. Giao việc và báo xong qua Orca orchestration.
 
 ---
 
@@ -93,7 +96,11 @@ nhận trả lời của Claude → chấp nhận, hoặc phản hồi thêm 1 l
 
 ## 6. Bảng phân công công việc (bản sao từ CLAUDE.md — Claude đề xuất cập nhật, BA duyệt)
 
-Ký hiệu: **Mức** B = Bắt buộc, Đk = Theo điều kiện, TC = Tùy chọn. **🧑** = BA trực tiếp thực hiện; AI làm phần chuẩn bị/tổng hợp ghi trong ngoặc. **🆕** = đề xuất bổ sung, chờ thống nhất ở Bước 0 và BA xác nhận.
+Ký hiệu: **Mức** B = Bắt buộc, Đk = Theo điều kiện, TC = Tùy chọn. **🧑** = BA trực tiếp thực hiện; AI làm phần chuẩn bị/tổng hợp ghi trong ngoặc. Bảng đã thống nhất ở Bước 0, BA duyệt ngày 17/11/2026 (D-002). G-63 … G-70 là việc bổ sung qua Bước 0; mã G-71 không dùng.
+
+**Loại dự án** (D-003): trong G-13 chọn **A** — BA phía chủ đầu tư (bật G-08, G-46, G-69), **B** — BA phía nhà cung cấp (bật G-05, G-06, G-70), **C** — sản phẩm nội bộ. Loại dự án quyết định việc Đk nào áp dụng.
+
+**Thông tin dự án chưa rõ** (D-006): loại dự án, nguồn vốn, điều kiện áp dụng việc Đk… chưa rõ thì **hỏi lại BA**, không tự đoán.
 
 Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duyệt sau khi xong**.
 
@@ -109,8 +116,10 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 | G-06 | Đề xuất giải pháp sơ bộ, demo/POC | Đk | Claude | Gemini | Solution proposal + prototype |
 | G-07 | Ước lượng phạm vi, công sức, lộ trình | B | Claude | Gemini | Bảng ước lượng + roadmap |
 | G-08 | Đánh giá và lựa chọn nhà cung cấp | Đk | Gemini | Claude | Tiêu chí + báo cáo so sánh |
-| G-09 | Lập Business Case | B | Claude | Gemini | Business Case |
+| G-09 | Lập Business Case và kế hoạch hiện thực hóa lợi ích | B | Claude | Gemini | Business Case + kế hoạch lợi ích (dự án vốn nhà nước: theo hồ sơ quy định) |
 | G-10 | 🧑 Trình bày đề xuất, xin phê duyệt chủ trương (chuẩn bị slide, kịch bản, câu hỏi dự kiến) | B | Gemini | Claude | Slide + Q&A dự kiến |
+| G-69 | Soạn yêu cầu kỹ thuật cho hồ sơ mời thầu / RFP (phía chủ đầu tư) | Đk | Claude | Gemini | Chương yêu cầu kỹ thuật + tiêu chí đánh giá |
+| G-70 | Xác định phạm vi hợp đồng / SOW và tiêu chí nghiệm thu cấp hợp đồng | Đk | Claude | Gemini | SOW + tiêu chí nghiệm thu |
 
 ### 1. Khởi tạo
 
@@ -118,9 +127,9 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 |---|---|---|---|---|---|
 | G-11 | Hỗ trợ lập Project Charter | B | Claude | Gemini | Project Charter nháp |
 | G-12 | Phân tích các bên liên quan, RACI | B | Claude | Gemini | Stakeholder register + RACI |
-| G-13 | Kế hoạch BA và quản lý yêu cầu | B | Claude | Gemini | BA Plan |
+| G-13 | Kế hoạch BA và quản lý yêu cầu (loại dự án A/B/C, điều kiện áp dụng việc Đk, phụ thuộc, quản trị yêu cầu) | B | Claude | Gemini | BA Plan |
 | G-14 | Nội dung nghiệp vụ cho kick-off | B | Gemini | Claude | Slide kick-off |
-| G-67 🆕 | Definition of Ready/Done và checklist chất lượng yêu cầu | B | Claude | Gemini | DoR/DoD + checklist review |
+| G-67 | Definition of Ready/Done và checklist chất lượng yêu cầu | B | Claude | Gemini | DoR/DoD + checklist review |
 
 ### 2. Khảo sát
 
@@ -130,11 +139,11 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 | G-16 | 🧑 Khảo sát AS-IS (chép lời, tóm tắt ghi âm/biên bản; vẽ AS-IS) | B | Gemini | Claude | Biên bản + BPMN AS-IS |
 | G-17 | Phân tích số liệu nền (BA thu thập số liệu) | B | Claude | Gemini | Bảng baseline KPI |
 | G-18 | Khảo sát hệ thống hiện có, điểm tích hợp | Đk | Claude | Gemini | Context diagram |
-| G-19 | Yêu cầu pháp lý và tuân thủ chi tiết | Đk | Claude | Gemini | Bảng yêu cầu tuân thủ |
+| G-19 | Yêu cầu pháp lý và tuân thủ chi tiết | Đk | Gemini | Claude | Bảng yêu cầu tuân thủ |
 | G-20 | Phân tích gap, thiết kế TO-BE | B | Claude | Gemini | Báo cáo gap + BPMN TO-BE |
 | G-21 | Đánh giá tác động thay đổi đến tổ chức | B | Claude | Gemini | Báo cáo tác động |
-| G-64 🆕 | Persona và hành trình người dùng | Đk | Gemini | Claude | Persona + customer journey |
-| G-66 🆕 | Đánh giá tác động bảo vệ dữ liệu cá nhân (DPIA) | Đk | Claude | Gemini | Báo cáo DPIA |
+| G-64 | Persona và hành trình người dùng | Đk | Gemini | Claude | Persona + customer journey |
+| G-66 | Đánh giá tác động bảo vệ dữ liệu cá nhân (DPIA) — bắt buộc khi xử lý dữ liệu cá nhân; đầu vào G-20, G-28 | Đk | Gemini | Claude | Báo cáo DPIA |
 
 ### 3. Phân tích & đặc tả
 
@@ -143,18 +152,18 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 | G-22 | Soạn BRD | B | Claude | Gemini | BRD |
 | G-23 | 🧑 Workshop ưu tiên, review, trình ký BRD (chuẩn bị tài liệu workshop, tổng hợp góp ý) | B | Claude | Gemini | Bộ tài liệu workshop + bảng góp ý |
 | G-24 | Actor, use case tổng thể, ánh xạ yêu cầu – chức năng | B | Claude | Gemini | Use case + bảng ánh xạ |
-| G-25 | Soạn URD (user story, tiêu chí chấp thuận) | B | Claude | Gemini | URD / backlog |
+| G-25 | Soạn URD (user story, tiêu chí chấp thuận) và tạo backlog ban đầu | B | Claude | Gemini | URD + backlog ban đầu |
 | G-26 | Soạn SRS | B | Claude | Gemini | SRS |
 | G-27 | Yêu cầu phi chức năng | B | Claude | Gemini | Danh mục NFR |
-| G-28 | Mô hình hóa nghiệp vụ và dữ liệu | B | Claude | Gemini | ERD, sequence, state |
-| G-29 | Wireframe / prototype | B | Claude | Gemini | Wireframe |
+| G-28 | Mô hình hóa nghiệp vụ và dữ liệu | B | Claude | Gemini | ERD, sequence, state, từ điển dữ liệu (có phân loại độ nhạy cảm) |
+| G-29 | Wireframe / prototype (khi dự án không có đội UX riêng) | Đk | Claude | Gemini | Wireframe |
 | G-30 | Đặc tả tích hợp mức nghiệp vụ | Đk | Claude | Gemini | Danh mục giao diện |
 | G-31 | Đặc tả thành phần dùng chung | B | Claude | Gemini | Phân quyền, tham số, thông báo, báo cáo |
-| G-32 | Đặc tả chuyển đổi dữ liệu | Đk | Claude | Gemini | Migration spec |
+| G-32 | Đặc tả chuyển đổi dữ liệu | Đk | Claude | Gemini | Migration spec + quy tắc đối soát |
 | G-33 | Ma trận truy vết (RTM) | B | Claude | Gemini | RTM |
 | G-34 | 🧑 Trình ký URD/SRS, chốt baseline (chuẩn bị gói review) | B | Claude | Gemini | Gói tài liệu trình ký |
-| G-63 🆕 | Danh mục quy tắc nghiệp vụ tập trung | B | Claude | Gemini | Business rules catalog |
-| G-65 🆕 | Xác định MVP và kế hoạch phát hành | Đk | Claude | Gemini | Release plan |
+| G-63 | Danh mục quy tắc nghiệp vụ tập trung | B | Claude | Gemini | Business rules catalog |
+| G-65 | Xác định MVP và kế hoạch phát hành | Đk | Claude | Gemini | Release plan |
 
 ### 4. Thiết kế
 
@@ -168,7 +177,7 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 
 | Mã | Công việc | Mức | Làm | Review | Đầu ra chính |
 |---|---|---|---|---|---|
-| G-38 | Quản lý backlog, làm rõ user story | B | Claude | Gemini | Backlog |
+| G-38 | Duy trì backlog (tinh chỉnh, chia nhỏ, sắp ưu tiên), làm rõ user story | B | Claude | Gemini | Backlog |
 | G-39 | 🧑 Giải đáp nghiệp vụ cho dev/QA (soạn câu trả lời nháp, cập nhật tài liệu) | B | Claude | Gemini | Q&A log |
 | G-40 | Quản lý CR, phân tích tác động | B | Claude | Gemini | CR log + phân tích |
 | G-41 | 🧑 Review/demo theo vòng (tóm tắt buổi demo) | Đk | Gemini | Claude | Biên bản demo |
@@ -177,9 +186,9 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 
 | Mã | Công việc | Mức | Làm | Review | Đầu ra chính |
 |---|---|---|---|---|---|
-| G-42 | Test case và kịch bản UAT | B | Claude | Gemini | Bộ test case |
+| G-42 | Test case và kịch bản UAT | B | Gemini | Claude | Bộ test case |
 | G-43 | Kế hoạch UAT | B | Claude | Gemini | UAT plan |
-| G-44 | Dữ liệu kiểm thử | B | Claude | Gemini | Bộ dữ liệu test |
+| G-44 | Dữ liệu kiểm thử (che giấu dữ liệu cá nhân) | B | Gemini | Claude | Bộ dữ liệu test |
 | G-45 | 🧑 Hỗ trợ UAT, phân loại lỗi (đọc ảnh/video lỗi, phân loại) | B | Gemini | Claude | Defect log |
 | G-46 | Báo cáo và biên bản nghiệm thu | B | Claude | Gemini | Báo cáo UAT |
 
@@ -187,13 +196,13 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 
 | Mã | Công việc | Mức | Làm | Review | Đầu ra chính |
 |---|---|---|---|---|---|
-| G-47 | Sẵn sàng go-live, kế hoạch cutover | B | Claude | Gemini | Checklist + cutover |
+| G-47 | Sẵn sàng go-live, kế hoạch cutover, yêu cầu chuyển tiếp | B | Claude | Gemini | Checklist + cutover + yêu cầu chuyển tiếp |
 | G-48 | Quy trình nghiệp vụ mới (SOP) | B | Claude | Gemini | Bộ SOP |
 | G-49 | Hướng dẫn sử dụng | B | Gemini | Claude | User manual + FAQ |
 | G-50 | Tài liệu và kế hoạch đào tạo | B | Gemini | Claude | Hồ sơ đào tạo |
 | G-51 | Truyền thông thay đổi | Đk | Gemini | Claude | Nội dung truyền thông |
 | G-52 | 🧑 Hypercare (tổng hợp phản hồi, ticket) | B | Gemini | Claude | Nhật ký hỗ trợ |
-| G-68 🆕 | Bàn giao vận hành và chuyển giao tri thức | B | Claude | Gemini | Hồ sơ bàn giao |
+| G-68 | Bàn giao vận hành và chuyển giao tri thức | B | Claude | Gemini | Hồ sơ bàn giao |
 
 ### 8. Sau triển khai
 
@@ -201,21 +210,21 @@ Mọi việc đều cần **BA xác nhận trước khi làm** (N1) và **BA duy
 |---|---|---|---|---|---|
 | G-53 | Đo lường lợi ích | B | Claude | Gemini | Báo cáo lợi ích |
 | G-54 | Phản hồi và yêu cầu cải tiến | B | Gemini | Claude | Backlog cải tiến |
-| G-55 | Bài học và đề xuất giai đoạn tiếp | B | Claude | Gemini | Báo cáo tổng kết |
+| G-55 | Bài học, đề xuất giai đoạn tiếp, tự đánh giá hiệu quả BA | B | Claude | Gemini | Báo cáo tổng kết |
 
 ### X. Xuyên suốt
 
 | Mã | Công việc | Mức | Làm | Review | Đầu ra chính |
 |---|---|---|---|---|---|
 | G-56 | Bảng thuật ngữ chung | B | Claude | Gemini | glossary.md |
-| G-57 | Quản lý phiên bản, đồng bộ tài liệu | B | Claude | Gemini | Bảng phiên bản |
-| G-58 | Biên bản họp, nhật ký quyết định | B | Gemini | Claude | Minutes + decision-log |
-| G-59 | Quản lý vấn đề và rủi ro | B | Claude | Gemini | Issue & risk log |
+| G-57 | Quản lý phiên bản, đồng bộ tài liệu, nhật ký quyết định | B | Claude | Gemini | Bảng phiên bản + decision-log |
+| G-58 | Biên bản họp (đề xuất mục quyết định để Claude ghi decision-log) | B | Gemini | Claude | `minutes/` |
+| G-59 | Quản lý RAID (rủi ro, giả định, vấn đề, phụ thuộc) | B | Claude | Gemini | RAID log |
 | G-60 | 🧑 Quản lý quan hệ, kỳ vọng (kế hoạch giao tiếp) | B | Claude | Gemini | Kế hoạch giao tiếp |
-| G-61 | Báo cáo tiến độ BA | B | Gemini | Claude | Báo cáo tuần |
+| G-61 | Báo cáo tiến độ BA | B | Claude | Gemini | Báo cáo tuần |
 | G-62 | Chuẩn hóa template, kèm cặp BA junior | TC | Claude | Gemini | Template + checklist |
 
-**Tổng**: 68 việc (62 gốc + 6 đề xuất 🆕). Claude làm 50, Gemini làm 18. Bạn review 50 việc của Claude và làm 18 việc của mình.
+**Tổng**: 70 việc (G-01 … G-70). Claude làm 49, Gemini làm 21. Bạn review 49 việc của Claude và làm 21 việc của mình.
 
 ---
 
