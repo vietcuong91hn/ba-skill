@@ -1,6 +1,6 @@
 # GEMINI.md — Nhiệm vụ của Gemini: Senior BA nghiên cứu & review
 
-> File này là nhiệm vụ của agent Gemini, chạy bằng Antigravity CLI trong Orca (agent id `antigravity`). Khi khởi chạy, agent được yêu cầu đọc file này; mỗi khi file được cập nhật, đọc lại trước khi nhận việc mới.
+> File này là nhiệm vụ của agent Gemini, chạy bằng Antigravity CLI trong Orca (agent id `antigravity`). Trong repo dự án, file này nằm ở `_skill/GEMINI.md`. Khi khởi chạy, agent được yêu cầu đọc `GEMINI.md` của dự án và file này; mỗi khi file được cập nhật, đọc lại trước khi nhận việc mới.
 > Agent điều phối: **Claude** (Claude Code), nhiệm vụ ở `CLAUDE.md`.
 > Người ra quyết định cuối cùng: **BA (người dùng)**.
 
@@ -52,9 +52,18 @@ Bạn **được ghi**:
 - `reviews/G-00_gemini.md` (Bước 0).
 - `minutes/` (G-58 Biên bản họp). Mục quyết định trong biên bản chỉ là đề xuất; Claude ghi vào `_shared/decision-log.md` sau khi BA xác nhận.
 
-Bạn **không được ghi**: `_shared/`, `00_input/`, `CLAUDE.md`, `GEMINI.md`, file có `owner: claude`. Muốn thay đổi các file này thì đề xuất trong `reviews/` hoặc gửi `ask`.
+Bạn **không được ghi**: `_shared/`, `00_input/`, `_skill/`, `CLAUDE.md`, `GEMINI.md`, file có `owner: claude`. Muốn thay đổi các file này thì đề xuất trong `reviews/` hoặc gửi `ask`.
 
 **Làm việc trên hai worktree** (D-001): Claude làm trên nhánh `feature/coord-claude`, Gemini trên nhánh `feature/review-gemini`. Mỗi bên commit file mình làm chủ vào nhánh của mình và đọc file của bên kia bằng `git show <nhánh>:<đường dẫn>`, không cần merge. Khi `CLAUDE.md`, `GEMINI.md` hoặc `_shared/` thay đổi, Claude merge nhánh điều phối sang nhánh của Gemini. Giao việc và báo xong qua Orca orchestration.
+
+### 4.1 Làm việc nhiều dự án (D-009)
+
+- **Bộ quy tắc gốc và repo dự án**: `ba-skill` là bộ quy tắc gốc. Mỗi dự án là một repo git riêng, gắn `ba-skill` làm submodule tại `_skill/`, chốt ở một phiên bản (tag `vX.Y`). `CLAUDE.md` và `GEMINI.md` ở gốc repo dự án chỉ trỏ về `_skill/` và ghi thông tin dự án (mẫu ở `templates/project/`). **Không sửa `_skill/`** trong repo dự án; quy tắc chỉ sửa ở `ba-skill`. Nâng phiên bản quy tắc cho dự án đang chạy phải qua Phiếu đề xuất và BA đồng ý.
+- **Mã dự án** do BA đặt (ví dụ `G` cho G-Safe). **Mã công việc trong dự án = mã dự án + số thứ tự ở bảng Mục 6**: dự án mã `G` dùng `G-01 … G-70`; dự án mã `H` dùng `H-01 … H-70` (`H-13` là việc số 13 của bảng). Mã `IN-xxx`, `D-xxx` đánh riêng trong từng dự án; khi nhắc ngoài dự án thì ghi kèm mã dự án, ví dụ `H/IN-003`.
+- **Tin nhắn của BA** mở đầu bằng mã dự án trong ngoặc vuông, ví dụ `[G] Nhận tài liệu …`. Thiếu mã dự án, hoặc mã không khớp repo đang mở → hỏi lại BA, không đoán.
+- **Không mang ngữ cảnh giữa các dự án**: chỉ dùng tài liệu trong repo dự án đang mở và `_skill/`. Không nhắc, không chép thông tin của dự án khác.
+- **Khởi tạo dự án** (Claude làm, Gemini review): tạo repo từ `templates/project/` → thêm submodule `_skill/` ở tag hiện hành → đăng ký repo với Orca → tạo worktree `<mã>-coord` (Claude, nhánh `feature/coord-claude`) và `<mã>-review` (Gemini chạy bằng Antigravity, nhánh `feature/review-gemini`) → mỗi worktree chạy `git submodule update --init`.
+- Khi được khởi chạy trong một dự án: đọc `GEMINI.md` ở gốc repo dự án (thông tin dự án), rồi đọc toàn bộ `_skill/GEMINI.md` (nhiệm vụ của bạn).
 
 ---
 

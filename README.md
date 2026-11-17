@@ -16,8 +16,15 @@ Bộ file nhiệm vụ cho hai agent AI cùng thực hiện toàn trình công v
 
 ## Cách dùng
 
-1. Copy `CLAUDE.md` và `GEMINI.md` vào thư mục gốc kho tài liệu dự án.
-2. Mở kho trong Orca, bật orchestration. Claude Code chạy ở worktree điều phối (nhánh `feature/coord-claude`). Gemini chạy bằng Antigravity ở worktree riêng (nhánh `feature/review-gemini`), tạo bằng:
+Repo này là **bộ quy tắc gốc**. Mỗi dự án là một repo riêng, gắn repo này làm submodule `_skill/` ở một phiên bản (tag), và chỉ lưu ngữ cảnh, tài liệu của dự án. Chi tiết ở Mục 4.1 của `CLAUDE.md`.
+
+**Khởi tạo một dự án** (Claude làm khi BA nhắn "Khởi tạo dự án [MÃ] …"):
+1. Tạo repo dự án từ `templates/project/`, điền thông tin vào `CLAUDE.md`, `GEMINI.md` của dự án.
+2. `git submodule add https://github.com/vietcuong91hn/ba-skill _skill`, rồi checkout tag hiện hành.
+3. Đăng ký repo với Orca và tạo worktree `<mã>-coord` (Claude) và `<mã>-review` (Gemini/Antigravity); mỗi worktree chạy `git submodule update --init`.
+
+**Làm việc trong repo này** (sửa bộ quy tắc):
+1. Mở kho trong Orca, bật orchestration. Claude Code chạy ở worktree điều phối (nhánh `feature/coord-claude`). Gemini chạy bằng Antigravity ở worktree riêng (nhánh `feature/review-gemini`), tạo bằng:
    `orca worktree create --name review-gemini --branch feature/review-gemini --base-branch feature/coord-claude --agent antigravity`
    Lời nhắn đầu tiên yêu cầu agent đọc `GEMINI.md`.
 3. Chạy **Bước 0** (đồng bộ danh mục công việc) trước khi bắt đầu dự án.
