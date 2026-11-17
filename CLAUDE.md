@@ -83,7 +83,24 @@ du-an-X/
 - **Mã dự án** do BA đặt (ví dụ `G` cho G-Safe). **Mã công việc trong dự án = mã dự án + số thứ tự ở bảng Mục 6**: dự án mã `G` dùng `G-01 … G-70`; dự án mã `H` dùng `H-01 … H-70` (`H-13` là việc số 13 của bảng). Mã `IN-xxx`, `D-xxx` đánh riêng trong từng dự án; khi nhắc ngoài dự án thì ghi kèm mã dự án, ví dụ `H/IN-003`.
 - **Tin nhắn của BA** mở đầu bằng mã dự án trong ngoặc vuông, ví dụ `[G] Nhận tài liệu …`. Thiếu mã dự án, hoặc mã không khớp repo đang mở → hỏi lại BA, không đoán.
 - **Không mang ngữ cảnh giữa các dự án**: chỉ dùng tài liệu trong repo dự án đang mở và `_skill/`. Không nhắc, không chép thông tin của dự án khác.
-- **Khởi tạo dự án** (Claude làm, Gemini review): tạo repo từ `templates/project/` → thêm submodule `_skill/` ở tag hiện hành → đăng ký repo với Orca → tạo worktree `<mã>-coord` (Claude, nhánh `feature/coord-claude`) và `<mã>-review` (Gemini chạy bằng Antigravity, nhánh `feature/review-gemini`) → mỗi worktree chạy `git submodule update --init`.
+- **Khởi tạo dự án** (Claude làm, Gemini review): tạo repo từ `templates/project/` → thêm submodule `_skill/` ở tag hiện hành → đăng ký repo với Orca → tạo worktree `<mã>-coord` (Claude, nhánh `feature/coord-claude`) và `<mã>-review` (Gemini chạy bằng Antigravity, nhánh `feature/review-gemini`) → mỗi worktree chạy `git submodule update --init` → ghi dự án và worktree vào `_shared/projects.md` của `ba-skill`.
+
+### 4.2 Chuyển máy — "Cài đặt worktree cho máy mới" (D-010)
+
+Lịch sử chat và cấu hình Orca chỉ nằm trên máy; mọi thứ cần giữ phải nằm trong repo và đã push lên GitHub. **Cuối mỗi buổi làm việc, push mọi nhánh.** Không mở cùng một repo trên hai máy cùng lúc; trao đổi giữa các máy qua GitHub, không qua OneDrive.
+
+Khi BA nhắn **"Cài đặt worktree cho máy mới"** (trong phiên Claude ở repo `ba-skill`):
+
+1. **Kiểm tra công cụ** và báo cái nào thiếu: `git`, `gh` (đã đăng nhập), `orca status`, Claude Code, Antigravity CLI (`agy`, đã đăng nhập).
+2. **Liệt kê** từ `_shared/projects.md`: mỗi dự án — repo, hiển thị, phiên bản quy tắc, các worktree (nhánh, agent); đánh dấu cái nào **đã có trên máy** (`orca repo list`, `orca worktree list`), commit mới nhất trên GitHub. Đối chiếu `gh repo list` để báo repo có trên GitHub mà chưa có trong danh mục (không tự thêm).
+3. **Hỏi BA xác nhận** (dừng chờ trả lời): cài dự án nào; thư mục gốc đặt repo (đề xuất ngoài OneDrive, ví dụ `C:\Users\<tên>\repos`); có khởi chạy agent luôn không.
+4. Sau khi BA xác nhận, với mỗi dự án được chọn:
+   - `git clone --recurse-submodules https://github.com/<repo> <thư mục gốc>/<tên repo>` (repo `ba-skill` khi chưa merge PR vào `main` thì clone thêm `-b feature/coord-claude`).
+   - `orca repo add --path <thư mục repo>`.
+   - Mỗi worktree: `orca worktree create --repo path:<thư mục repo> --name <worktree> --branch <nhánh> --base-branch origin/<nhánh> --no-parent`, rồi trong worktree chạy `git branch -u origin/<nhánh>` và `git submodule update --init`. **Lần chạy đầu cần kiểm tra**: nếu Orca tạo nhánh có hậu tố số (`<nhánh>-2`) thì dừng, báo BA, không push nhánh lạ.
+   - Nếu BA đồng ý: khởi chạy agent theo cột "Lời nhắn khởi chạy" của `_shared/projects.md` (`orca agent launch --agent <id> --worktree path:<worktree> --prompt "<lời nhắn>"`).
+5. **Kiểm tra và báo cáo**: mỗi worktree đúng nhánh, khớp `origin`, `_skill/` đúng tag; Claude của dự án nạp được quy tắc; Antigravity xác nhận đã đọc hai file `GEMINI.md`. Repo đã có sẵn trên máy thì **không cài lại**, chỉ `git fetch` và báo trạng thái.
+6. Không tạo lại Orca Run cũ; Run mới được tạo khi có việc giao.
 
 ---
 
