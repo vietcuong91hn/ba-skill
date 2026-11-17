@@ -76,7 +76,7 @@ Cập nhật: 17/11/2026 · Căn cứ: D-002 (BA duyệt `reviews/G-00_thongnhat
 | G-54 | Phản hồi và yêu cầu cải tiến | 8 | B | Gemini | Claude | Chưa bắt đầu | |
 | G-55 | Bài học, đề xuất giai đoạn tiếp + tự đánh giá BA | 8 | B | Claude | Gemini | Chưa bắt đầu | |
 | G-56 | Bảng thuật ngữ chung | X | B | Claude | Gemini | Chưa bắt đầu | |
-| G-57 | Quản lý phiên bản, đồng bộ tài liệu, decision-log | X | B | Claude | Gemini | Đang làm | decision-log D-001…D-007; cập nhật CLAUDE.md/GEMINI.md đang chờ Gemini review |
+| G-57 | Quản lý phiên bản, đồng bộ tài liệu, decision-log | X | B | Claude | Gemini | Đang làm | decision-log D-001…D-007; cập nhật CLAUDE.md/GEMINI.md xong, Gemini review đạt (reviews/D-007_review.md, 0 nhận xét) |
 | G-58 | Biên bản họp (`minutes/`) | X | B | Gemini | Claude | Chưa bắt đầu | |
 | G-59 | Quản lý RAID | X | B | Claude | Gemini | Chưa bắt đầu | |
 | G-60 | 🧑 Quản lý quan hệ, kỳ vọng | X | B | Claude | Gemini | Chưa bắt đầu | |

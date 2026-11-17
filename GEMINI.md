@@ -1,6 +1,6 @@
 # GEMINI.md — Nhiệm vụ của Gemini: Senior BA nghiên cứu & review
 
-> File này được Gemini CLI tự đọc khi mở kho tài liệu dự án trong Orca.
+> File này là nhiệm vụ của agent Gemini, chạy bằng Antigravity CLI trong Orca (agent id `antigravity`). Khi khởi chạy, agent được yêu cầu đọc file này; mỗi khi file được cập nhật, đọc lại trước khi nhận việc mới.
 > Agent điều phối: **Claude** (Claude Code), nhiệm vụ ở `CLAUDE.md`.
 > Người ra quyết định cuối cùng: **BA (người dùng)**.
 

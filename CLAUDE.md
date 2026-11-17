@@ -1,7 +1,7 @@
 # CLAUDE.md — Nhiệm vụ của Claude: Senior BA điều phối
 
 > File này được Claude Code tự đọc khi mở kho tài liệu dự án trong Orca.
-> Agent đi cùng: **Gemini** (Gemini CLI), nhiệm vụ ở `GEMINI.md`.
+> Agent đi cùng: **Gemini** (chạy bằng Antigravity CLI trong Orca, agent id `antigravity`), nhiệm vụ ở `GEMINI.md`.
 > Người ra quyết định cuối cùng: **BA (người dùng)**.
 
 ---
